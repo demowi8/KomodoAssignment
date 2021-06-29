@@ -10,6 +10,9 @@ namespace Komodo_Assignment_DevTeamMngApp
     {
         static void Main(string[] args)
         {
+            //User Interferace
+            ProgramUI uI = new ProgramUI();
+            uI.Run();
         }
     }
 }
