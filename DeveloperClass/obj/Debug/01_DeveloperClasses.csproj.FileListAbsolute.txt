@@ -1,0 +1,6 @@
+C:\Users\Desmond\Desktop\ELEVENFIFTY PROJECTS\ELEVENFIFTY PROJECTS\Assignments\Komodo_Assignment_DevTeamMngApp\DeveloperClass\bin\Debug\DeveloperClass.dll
+C:\Users\Desmond\Desktop\ELEVENFIFTY PROJECTS\ELEVENFIFTY PROJECTS\Assignments\Komodo_Assignment_DevTeamMngApp\DeveloperClass\bin\Debug\DeveloperClass.pdb
+C:\Users\Desmond\Desktop\ELEVENFIFTY PROJECTS\ELEVENFIFTY PROJECTS\Assignments\Komodo_Assignment_DevTeamMngApp\DeveloperClass\obj\Debug\01_DeveloperClasses.csproj.AssemblyReference.cache
+C:\Users\Desmond\Desktop\ELEVENFIFTY PROJECTS\ELEVENFIFTY PROJECTS\Assignments\Komodo_Assignment_DevTeamMngApp\DeveloperClass\obj\Debug\01_DeveloperClasses.csproj.CoreCompileInputs.cache
+C:\Users\Desmond\Desktop\ELEVENFIFTY PROJECTS\ELEVENFIFTY PROJECTS\Assignments\Komodo_Assignment_DevTeamMngApp\DeveloperClass\obj\Debug\DeveloperClass.dll
+C:\Users\Desmond\Desktop\ELEVENFIFTY PROJECTS\ELEVENFIFTY PROJECTS\Assignments\Komodo_Assignment_DevTeamMngApp\DeveloperClass\obj\Debug\DeveloperClass.pdb

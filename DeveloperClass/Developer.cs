@@ -15,8 +15,8 @@ namespace DeveloperClass
         public bool AccessToPS { get; set; }
 
         public Developer() { }
-        
-        public Developer( string firstName, string lastName, string name, string numberID, bool accessToPS)
+
+        public Developer(string firstName, string lastName, string name, string numberID, bool accessToPS)
         {
             FirstName = firstName;
             LastName = lastName;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevTeamClass
 {
-    class DevTeamRepo_Repository
+    public class DevTeamRepo_Repository
     {
         //field
         protected readonly List<DevTeam> _devTeams = new List<DevTeam>();

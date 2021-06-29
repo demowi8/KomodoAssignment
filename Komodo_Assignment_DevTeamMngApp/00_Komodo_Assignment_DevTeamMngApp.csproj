@@ -55,6 +55,10 @@
       <Project>{D7811537-E688-429A-9918-943D0FCBC599}</Project>
       <Name>01_DeveloperClasses</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DevTeamClass\02_DevTeamClasses.csproj">
+      <Project>{7C8E072E-BB83-4A57-B67C-D8B766BE4F68}</Project>
+      <Name>02_DevTeamClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

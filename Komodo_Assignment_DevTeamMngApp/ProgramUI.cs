@@ -11,7 +11,7 @@ namespace Komodo_Assignment_DevTeamMngApp
     public class ProgramUI
     {
         protected readonly Developer_Repository _developerInfo = new Developer_Repository();
-
+        protected readonly DevTeamRepo_Repository _devTeamRepo = new DevTeamRepo_Repository(); 
         public void Run()
         {
             DisplayMenu();
@@ -47,11 +47,11 @@ namespace Komodo_Assignment_DevTeamMngApp
 
                         break;
                     case "3":
-                        RemoveDeveloper();
+                        RemoveADeveloper();
 
                         break;
                     case "4":
-                        AddTeams();
+                        AddADevTeam();
 
                         break;
                     case "5":
@@ -114,7 +114,12 @@ namespace Komodo_Assignment_DevTeamMngApp
 
             //Access to plural sight
             Console.WriteLine("Does the developer have access to Plural Sight?");
-            newDeveloper.AccessToPS = Console.ReadLine(true || false);
+            string YesOrNo = Console.ReadLine();
+            if(YesOrNo == "Yes")
+            {
+                newDeveloper.AccessToPS = true;
+            }
+            else { newDeveloper.AccessToPS = false; }
         }
 
         //Remove developers
@@ -123,7 +128,7 @@ namespace Komodo_Assignment_DevTeamMngApp
             Console.Clear();
             //Select the members to delete
             //Get Content by title
-            Console.WriteLine("What title would you like to remove?");
+            Console.WriteLine("Which member would you like to remove?");
 
             //setting up a counter for future use
             int count = 0;
@@ -144,12 +149,12 @@ namespace Komodo_Assignment_DevTeamMngApp
             {
                 //Delete the members
                 //Selecting object to be deleted
-                Developer targetContent = listOfMembers[targetIndex];
+                Developer targetDeveloper = listOfMembers[targetIndex];
                 //Check to see if deleted
-                if (_developerInfo.RemoveContentFromList(targetContent))
+                if (_developerInfo.RemoveContentFromList(targetDeveloper))
                 {
                     //success message
-                    Console.WriteLine($"{targetContent.Name} removed from repo");
+                    Console.WriteLine($"{targetDeveloper.Name} removed from repo");
                 }
                 else
                 {
@@ -169,12 +174,135 @@ namespace Komodo_Assignment_DevTeamMngApp
         {
             Console.Clear();
 
-            DevTeam newDevTeam 
+            DevTeam newDevTeam = new DevTeam();
+
+            Console.WriteLine("Enter the name of the Development Team");
+            newDevTeam.TeamName = Console.ReadLine();
+
         }
 
             //View list of teams
-            //Remove a team
-            //Add a developer to a team
-            //Remove a developer from a team
+            private void ViewListOfTeams()
+        {
+            Console.Clear();
+
+            List<DevTeam> listOfDevTeams = _devTeamRepo.SeeListOfTeams();
+            
+            foreach(DevTeam teams in listOfDevTeams)
+            {
+                Console.WriteLine(teams);
+            }
+
+        }
+
+        //Remove a team
+        private void RemoveATeam()
+        {
+            Console.Clear();
+            //Select the team to delete
+            //Get Content by title
+            Console.WriteLine("Which team would you like to remove?");
+
+            //setting up a counter for future use
+            int count = 0;
+
+            //DisplayAllContent
+            List<DevTeam> listOfDevTeams = _devTeamRepo.SeeListOfTeams();
+            foreach (DevTeam teams in listOfDevTeams)
+            {
+                count++;
+                Console.WriteLine($"{count}. {teams.TeamName}");
+            }
+
+            int userInput = int.Parse(Console.ReadLine());
+            int targetIndex = userInput - 1;
+
+            //Did I get valid input
+            if (targetIndex >= 0 && targetIndex < listOfDevTeams.Count())
+            {
+                //Delete the members
+                //Selecting object to be deleted
+                DevTeam targetDevTeam = listOfDevTeams[targetIndex];
+                //Check to see if deleted
+                if (_devTeamRepo.RemoveTeamFromList(targetDevTeam))
+                {
+                    //success message
+                    Console.WriteLine($"{targetDevTeam.TeamName} removed from repo");
+                }
+                else
+                {
+                    //Fail Message
+                    Console.WriteLine("Sorry something went wrong");
+                }
+            }
+            //If invalid input
+            else
+            {
+                Console.WriteLine("Invalid Selection");
+            }
+        }
+
+
+        //Add a developer to a team
+        private void AddDeveloperToTeam()
+        {
+            Console.Clear();
+            //What Team are you adding to?
+            List<DevTeam> listOfDevTeams = _devTeamRepo.SeeListOfTeams();
+
+            foreach (DevTeam teams in listOfDevTeams)
+            {
+                Console.WriteLine(teams);
+            }
+            Console.WriteLine("What Team do you want to add to?");
+            string TeamName = Console.ReadLine();
+
+            //Get list of developers
+            List<Developer> listOfMembers = _developerInfo.SeeDeveloperList();
+
+            foreach (Developer members in listOfMembers)
+            {
+                Console.WriteLine(members);
+            }
+            Console.WriteLine("Which developer do you want to add?");
+            string Name = Console.ReadLine();
+
+            //Select from list of developers
+            Developer developer = _developerInfo.GetDeveloperByName(Name);
+            DevTeam devTeam = _devTeamRepo.GetTeamByName(TeamName);
+            devTeam.ListOfMembers.Add(developer);
+
+
+        }
+
+        //Remove a developer from a team
+        private void RemoveDeveloperFromTeam()
+        {
+            Console.Clear();
+            //What Team do you want to remove from?
+            List<DevTeam> listOfDevTeams = _devTeamRepo.SeeListOfTeams();
+
+            foreach (DevTeam teams in listOfDevTeams)
+            {
+                Console.WriteLine(teams);
+            }
+            Console.WriteLine("What Team do you want to remove from?");
+            string TeamName = Console.ReadLine();
+            //Which developer do you want to remove?
+            List<Developer> devTeamMembers = _developerInfo.SeeDeveloperList();
+            DevTeam devTeam = _devTeamRepo.GetTeamByName(TeamName);
+            foreach (Developer members in devTeam.ListOfMembers)
+            {
+                Console.WriteLine(members);
+            }
+            Console.WriteLine("Which developer do you want to remove?");
+            string Name = Console.ReadLine();
+
+            //Select and Remove
+            Developer RemoveFromTeam = _developerInfo.GetDeveloperByName(Name);
+            devTeam.ListOfMembers.Remove(RemoveFromTeam);
+        }
+
+
     }
 }

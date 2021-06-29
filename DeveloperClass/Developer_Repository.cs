@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DeveloperClass
 {
     //Create a POCO
-    class Developer_Repository
+    public class Developer_Repository
     {
         //Field
         protected readonly List<Developer> _developerInfo = new List<Developer>();
